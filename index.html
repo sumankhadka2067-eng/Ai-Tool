@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ai Tool Hub</title>
+  <meta name="description" content="Ai Tool Hub — a clean, modern, responsive landing page showcasing multiple tools." />
+  <style>
+    /* ===== Design Theme ===== */
+    :root {
+      --bg: #1E1E2F;            /* Dark navy */
+      --text: #EAEAEA;          /* Light gray */
+      --header: #2B2D42;        /* Deep blue */
+      --accent: #FFD700;        /* Gold */
+      --accent-hover: #E6C200;  /* Deeper gold */
+      --card: #3A3D5B;          /* Dark grayish-blue */
+      --shadow-gold: rgba(255, 215, 0, 0.2);
+      --navy: #1E1E2F;
+    }
+
+    /* Base reset and typography */
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    /* ===== Header ===== */
+    header {
+      background: var(--header);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 14px var(--shadow-gold);
+    }
+    .topbar {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .logo {
+      font-weight: 700; /* slightly bold */
+      letter-spacing: 0.3px;
+    }
+    .logo span {
+      color: var(--accent);
+    }
+    nav {
+      display: flex;
+      gap: 18px;
+    }
+    nav a {
+      padding: 8px 10px;
+      border-radius: 6px;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+    nav a:hover, nav a:focus-visible {
+      background: var(--accent);
+      color: var(--navy);
+      outline: none;
+    }
+
+    /* ===== Hero Section ===== */
+    .hero {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 32px 24px 8px;
+      text-align: center;
+    }
+    .hero h1 {
+      margin: 0 0 8px;
+      font-size: 2.2rem;
+      letter-spacing: 0.5px;
+    }
+    .hero p {
+      margin: 0 auto;
+      max-width: 800px;
+      opacity: 0.9;
+    }
+
+    /* ===== Grid / Tool Cards ===== */
+    .container {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+    .card {
+      background: var(--card);
+      border-radius: 10px;
+      padding: 18px 18px 20px;
+      box-shadow: 0 8px 22px var(--shadow-gold);
+      transition: transform 0.18s ease, background 0.18s ease, color 0.18s ease, box-shadow 0.18s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .card h2 {
+      margin: 0;
+      font-size: 1.25rem;
+      letter-spacing: 0.3px;
+    }
+    .card p {
+      margin: 0 0 8px;
+      opacity: 0.95;
+    }
+    .card .actions {
+      margin-top: auto;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      background: var(--accent);
+      color: var(--navy);
+      border: none;
+      border-radius: 5px; /* rounded as requested */
+      padding: 10px 14px;
+      font-weight: 700;   /* bold */
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.12s ease, box-shadow 0.2s ease;
+      box-shadow: 0 4px 12px var(--shadow-gold);
+      min-height: 44px;   /* mobile tap target */
+    }
+    .btn:hover { background: var(--accent-hover); }
+    .btn:active { transform: translateY(1px); }
+    .btn:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    /* Card hover effect */
+    .card:hover, .card:focus-within {
+      background: var(--accent);                 /* bg switches to gold */
+      color: var(--navy);                        /* text turns dark navy */
+      transform: translateY(-1px);
+      box-shadow: 0 10px 26px var(--shadow-gold);
+    }
+
+    /* ===== Footer ===== */
+    footer {
+      margin-top: 32px;
+      background: var(--header);
+      color: var(--text);
+      box-shadow: 0 -4px 14px var(--shadow-gold);
+    }
+    .footer-wrap {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 24px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      text-align: center;
+    }
+    .footer-brand {
+      font-weight: 600;
+    }
+    .footer-tagline {
+      opacity: 0.9;
+    }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+    .footer-links a {
+      padding: 6px 8px;
+      border-radius: 6px;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+    .footer-links a:hover, .footer-links a:focus-visible {
+      background: var(--accent);
+      color: var(--navy);
+      outline: none;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 768px) {
+      .grid { grid-template-columns: 1fr; } /* single-column on mobile */
+      .topbar { flex-direction: column; align-items: flex-start; }
+      nav { flex-wrap: wrap; }
+      .hero h1 { font-size: 1.8rem; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="topbar" role="navigation" aria-label="Top header">
+      <div class="brand">
+        <div class="logo" aria-label="Logo">Tools <span>Wonder</span></div>
+      </div>
+      <nav>
+        <a href="#" aria-label="Home">Home</a>
+        <a href="#" aria-label="Tools">Tools</a>
+        <a href="#" aria-label="Contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1>Ai Tool Hub</h1>
+    <p>Explore a premium, minimalist collection of tools crafted to simplify your digital life. Clean design, modern interactions, fully responsive.</p>
+  </section>
+
+  <!-- Tools Grid -->
+  <main class="container">
+    <div class="grid" id="toolsGrid" aria-live="polite">
+      <!-- Cards injected by JS -->
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-wrap">
+      <div class="footer-brand">Footer</div>
+      <div class="footer-tagline">Simplifying your digital life.</div>
+      <div class="footer-contact">Contact: <a href="mailto:khadkasuman2007@gmail.com">khadkasuman2007@gmail.com</a></div>
+      <div class="footer-links">
+        <a href="#" aria-label="Privacy Policy">Privacy Policy</a>
+        <a href="#" aria-label="Terms of Use">Terms of Use</a>
+      </div>
+      <small style="opacity:.8;">No phone number • No clutter • Clean layout</small>
+    </div>
+  </footer>
+
+  <script>
+    // ===== Tool data =====
+    const tools = [
+      { name: "Image Converter", desc: "Convert images between formats quickly and reliably." },
+      { name: "Image Compressor", desc: "Compress images to reduce size without losing quality." },
+      { name: "Image Crop", desc: "Crop images precisely with simple controls." },
+      { name: "Video Converter", desc: "Convert videos to various formats with ease." },
+      { name: "Age Calculator", desc: "Calculate age from date of birth instantly." },
+      { name: "EMI Calculator", desc: "Estimate monthly loan payments accurately." },
+      { name: "SIP Calculator", desc: "Plan your investments with step-by-step SIP calculations." },
+      { name: "Audio Trim", desc: "Trim audio files to the perfect length." }
+    ];
+
+    // ===== Render cards =====
+    const grid = document.getElementById('toolsGrid');
+
+    function createCard(tool) {
+      const card = document.createElement('article');
+      card.className = 'card';
+      card.setAttribute('tabindex', '0');
+      card.setAttribute('aria-label', `${tool.name} tool card`);
+
+      const h2 = document.createElement('h2');
+      h2.textContent = tool.name;
+
+      const p = document.createElement('p');
+      p.textContent = tool.desc;
+
+      const actions = document.createElement('div');
+      actions.className = 'actions';
+
+      const btn = document.createElement('button');
+      btn.className = 'btn';
+      btn.textContent = 'Open Tool';
+      btn.addEventListener('click', () => {
+        alert(`Redirecting to ${tool.name}`);
+        // Placeholder for real navigation:
+        // window.location.href = `/tools/${slugify(tool.name)}.html`;
+      });
+
+      actions.appendChild(btn);
+      card.appendChild(h2);
+      card.appendChild(p);
+      card.appendChild(actions);
+      return card;
+    }
+
+    tools.forEach(tool => grid.appendChild(createCard(tool)));
+
+    // Optional helper if you later add real links
+    function slugify(str) {
+      return String(str).toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
+    }
+  </script>
+</body>
+</html>
